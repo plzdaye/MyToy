@@ -32,8 +32,7 @@ import rx.Observable;
  */
 public interface GankApi {
 
-    @GET("/data/福利/" + PLZFactory.newsSize + "/{page}")
-    Observable<MeizhiData> getMeizhiData(
+    @GET("/data/福利/" + PLZFactory.newsSize + "/{page}")Observable<MeizhiData> getMeizhiData(
             @Path("page") int page);
 
 //    @GET("/day/{year}/{month}/{day}")

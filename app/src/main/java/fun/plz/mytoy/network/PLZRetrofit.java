@@ -27,7 +27,7 @@ public class PLZRetrofit {
         OkHttpClient client = new OkHttpClient.Builder().connectTimeout(12, TimeUnit.SECONDS).addNetworkInterceptor(new StethoInterceptor()).build();
 
         Retrofit.Builder builder = new Retrofit.Builder().client(client)
-                .baseUrl("http://gank.io/api")
+                .baseUrl("http://gank.io/api/")
                 .addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
         gankService = retrofit.create(GankApi.class);

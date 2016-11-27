@@ -42,8 +42,8 @@ public class MainActivity extends BaseActivity {
 //                    setRefresh(false);
 //                }, throwable -> loadError(throwable));
         // @formatter:on
-//        Observable result = sGankIO.getMeizhiData(mPage);
-//        result.cache();
+        Observable result = sGankIO.getMeizhiData(mPage);
+        result.cache();
     }
 
 
