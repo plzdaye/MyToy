@@ -21,12 +21,13 @@ package fun.plz.mytoy.model;
 
 import java.util.List;
 
+import fun.plz.mytoy.model.entity.Meizhi;
 
 
 /**
  * Created by drakeet on 8/9/15.
  */
 public class MeizhiData {
-
-//    public List<Meizhi> results;
+    String error;
+    public List<Meizhi> results;
 }

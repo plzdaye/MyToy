@@ -23,6 +23,7 @@ package fun.plz.mytoy.network;
 // @formatter:off
 
 import fun.plz.mytoy.model.MeizhiData;
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;
@@ -32,8 +33,10 @@ import rx.Observable;
  */
 public interface GankApi {
 
-    @GET("/data/福利/" + PLZFactory.newsSize + "/{page}")Observable<MeizhiData> getMeizhiData(
+    @GET("data/福利/" + PLZFactory.newsSize + "/{page}")Observable<MeizhiData> getMeizhiData(
             @Path("page") int page);
+//    @GET("data/福利/" + PLZFactory.newsSize + "/{page}")
+//    Call<MeizhiData> getMeizhiData(@Path("page") int page);
 
 //    @GET("/day/{year}/{month}/{day}")
 //    Observable<GankData> getGankData(
