@@ -2,11 +2,22 @@ package fun.plz.mytoy.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import fun.plz.mytoy.R;
 import fun.plz.mytoy.base.BaseActivity;
 import fun.plz.mytoy.model.MeizhiData;
+import fun.plz.mytoy.model.entity.Meizhi;
+import fun.plz.mytoy.views.adapter.MeizhiListAdapter;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.Observable;
@@ -17,35 +28,39 @@ import rx.Subscriber;
  */
 
 public class MainActivity extends BaseActivity {
-    private int mPage = -1;
+    @BindView(R.id.rv_meizhi) RecyclerView mRecyclerView;
+    private MeizhiListAdapter mMeizhiListAdapter;
+    private List<Meizhi> mMeizhiList;
+    private int mPage = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        mMeizhiList = new ArrayList<>();
         loadDate();
+        setupRecyclerView();
+    }
+
+    private void setupRecyclerView() {
+        final StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2,
+                StaggeredGridLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mMeizhiListAdapter = new MeizhiListAdapter(this, mMeizhiList);
+        mRecyclerView.setAdapter(mMeizhiListAdapter);
+//        new Once(this).show("tip_guide_6", () -> {
+//            Snackbar.make(mRecyclerView, getString(R.string.tip_guide), Snackbar.LENGTH_INDEFINITE)
+//                    .setAction(R.string.i_know, v -> {
+//                    })
+//                    .show();
+//        });
+
+//        mRecyclerView.addOnScrollListener(getOnBottomListener(layoutManager));
+//        mMeizhiListAdapter.setOnMeizhiTouchListener(getOnMeizhiTouchListener());
     }
 
     private void loadDate() {
-//        Subscription s = Observable
-//                .zip(sGankIO.getMeizhiData(mPage),
-//                        sGankIO.get休息视频Data(mPage),
-//                        this::createMeizhiDataWith休息视频Desc)
-//                .map(meizhiData -> meizhiData.results)
-//                .flatMap(Observable::from)
-//                .toSortedList((meizhi1, meizhi2) ->
-//                        meizhi2.publishedAt.compareTo(meizhi1.publishedAt))
-//                .doOnNext(this::saveMeizhis)
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .finallyDo(() -> setRefresh(false))
-//                .subscribe(meizhis -> {
-//                    if (clean) mMeizhiList.clear();
-//                    mMeizhiList.addAll(meizhis);
-//                    mMeizhiListAdapter.notifyDataSetChanged();
-//                    setRefresh(false);
-//                }, throwable -> loadError(throwable));
-        // @formatter:on
-
-
         Observable result = sGankIO.getMeizhiData(mPage);
         result.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -62,29 +77,32 @@ public class MainActivity extends BaseActivity {
 
                     @Override
                     public void onNext(MeizhiData meizhiData) {
+                        mMeizhiList.addAll(meizhiData.results);
+                        mMeizhiListAdapter.notifyDataSetChanged();
                         Log.e("---%s", meizhiData.results.get(0).toString());
                     }
-
                 });
-//        result.cache();
+    }
 
-//        Thread thread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                Call<MeizhiData> call = sGankIO.getMeizhiData(1);
-//                try{
-//                    MeizhiData meizhiData = call.execute().body();
-//                    meizhiData.results.get(0);
-//                }catch (IOException e){
-//                    e.printStackTrace();
+//    RecyclerView.OnScrollListener getOnBottomListener(StaggeredGridLayoutManager layoutManager) {
+//        return new RecyclerView.OnScrollListener() {
+//            @Override public void onScrolled(RecyclerView rv, int dx, int dy) {
+//                boolean isBottom =
+//                        layoutManager.findLastCompletelyVisibleItemPositions(new int[2])[1] >=
+//                                mMeizhiListAdapter.getItemCount() - PRELOAD_SIZE;
+//                if (!mSwipeRefreshLayout.isRefreshing() && isBottom) {
+//                    if (!mIsFirstTimeTouchBottom) {
+//                        mSwipeRefreshLayout.setRefreshing(true);
+//                        mPage += 1;
+//                        loadData();
+//                    } else {
+//                        mIsFirstTimeTouchBottom = false;
+//                    }
 //                }
 //            }
-//        });
-//        thread.start();
+//        };
+//    }
 
-
-
-    }
 
 
 }
