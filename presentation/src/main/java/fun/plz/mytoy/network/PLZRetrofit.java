@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
@@ -28,6 +29,7 @@ public class PLZRetrofit {
 
         Retrofit.Builder builder = new Retrofit.Builder().client(client)
                 .baseUrl("http://gank.io/api/")
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
         gankService = retrofit.create(GankApi.class);
