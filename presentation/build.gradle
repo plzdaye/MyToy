@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
@@ -18,8 +19,8 @@ android {
         testApplicationId globalConfiguration.getAt("testApplicationId")
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     packagingOptions {
         exclude 'LICENSE.txt'
@@ -58,6 +59,10 @@ android {
     }
 }
 
+retrolambda {//指定将源码编译的级别，使用下列代码，会将代码编译到兼容1.6的字节码格式
+    javaVersion JavaVersion.VERSION_1_6
+}
+
 dependencies {
     def presentationDependencies = rootProject.ext.presentationDependencies
     def presentationTestDependencies = rootProject.ext.presentationTestDependencies
@@ -70,12 +75,13 @@ dependencies {
     compile presentationDependencies.dagger
     compile presentationDependencies.butterKnife
     compile presentationDependencies.recyclerView
-    compile presentationDependencies.rxJava1
+    compile presentationDependencies.rxJava
     compile presentationDependencies.rxAndroid
     compile presentationDependencies.appcompatV7
     compile presentationDependencies.design
     compile presentationDependencies.retrofit
     compile presentationDependencies.converterGson
+    compile presentationDependencies.glide
     provided presentationDependencies.javaxAnnotation
 
     androidTestCompile presentationTestDependencies.mockito

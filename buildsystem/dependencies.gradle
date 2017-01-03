@@ -16,7 +16,6 @@ ext {
   butterKnifeVersion = '8.4.0'
   recyclerViewVersion = '21.0.3'
   rxJavaVersion = '2.0.2'
-  rxJava1Version = '1.2.2'
   rxAndroidVersion = '2.0.1'
   javaxAnnotationVersion = '1.0'
   javaxInjectVersion = '1'
@@ -28,6 +27,7 @@ ext {
   designVersion = '24.2.1'
   retrofitVersion = '2.1.0'
   converterGsonVersion = '2.1.0'
+  glideVersion = '3.7.0'
 
   //Testing
   robolectricVersion = '3.1.1'
@@ -47,13 +47,13 @@ ext {
       butterKnife:        "com.jakewharton:butterknife:${butterKnifeVersion}",
       recyclerView:       "com.android.support:recyclerview-v7:${recyclerViewVersion}",
       rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-      rxJava1:            "io.reactivex:rxjava:${rxJava1Version}",
       rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
       javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
       appcompatV7:        "com.android.support:appcompat-v7:${appcompatV7Version}",
       design:             "com.android.support:design:${designVersion}",
       retrofit:           "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-      converterGson:      "com.squareup.retrofit2:converter-gson:${converterGsonVersion}"
+      converterGson:      "com.squareup.retrofit2:converter-gson:${converterGsonVersion}",
+      glide:              "com.github.bumptech.glide:glide:${glideVersion}"
   ]
 
   presentationTestDependencies = [

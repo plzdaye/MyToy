@@ -23,10 +23,9 @@ package fun.plz.mytoy.network;
 // @formatter:off
 
 import fun.plz.mytoy.model.MeizhiData;
-import retrofit2.Call;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import rx.Observable;
 
 /**
  * Created by drakeet on 8/9/15.

@@ -1,6 +1,5 @@
 package fun.plz.mytoy.network;
 
-import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -8,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
@@ -25,7 +23,7 @@ public class PLZRetrofit {
             .create();
 
     PLZRetrofit(){
-        OkHttpClient client = new OkHttpClient.Builder().connectTimeout(12, TimeUnit.SECONDS).addNetworkInterceptor(new StethoInterceptor()).build();
+        OkHttpClient client = new OkHttpClient.Builder().connectTimeout(12, TimeUnit.SECONDS).build();
 
         Retrofit.Builder builder = new Retrofit.Builder().client(client)
                 .baseUrl("http://gank.io/api/")
