@@ -22,6 +22,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     packagingOptions {
         exclude 'LICENSE.txt'
         exclude 'META-INF/DEPENDENCIES'
@@ -29,6 +30,7 @@ android {
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/LICENSE'
     }
+
     lintOptions {
         quiet true
         abortOnError false
@@ -74,7 +76,7 @@ dependencies {
     apt presentationDependencies.daggerCompiler
     compile presentationDependencies.dagger
     compile presentationDependencies.butterKnife
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    apt presentationDependencies.butterKnifeCompiler
     compile presentationDependencies.recyclerView
     compile presentationDependencies.rxJava
     compile presentationDependencies.rxAndroid
