@@ -2,6 +2,7 @@ package fun.plz.mytoy.network;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -27,7 +28,7 @@ public class PLZRetrofit {
 
         Retrofit.Builder builder = new Retrofit.Builder().client(client)
                 .baseUrl("http://gank.io/api/")
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
         gankService = retrofit.create(GankApi.class);

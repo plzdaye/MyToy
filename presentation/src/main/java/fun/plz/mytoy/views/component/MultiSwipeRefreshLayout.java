@@ -1,4 +1,4 @@
-package fun.plz.mytoy.views.widgets;
+package fun.plz.mytoy.views.component;
 
 import android.content.Context;
 import android.content.res.TypedArray;

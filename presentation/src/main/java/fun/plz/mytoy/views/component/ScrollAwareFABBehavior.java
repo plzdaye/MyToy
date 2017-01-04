@@ -17,7 +17,7 @@
  * along with Meizhi.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package fun.plz.mytoy.views.widgets;
+package fun.plz.mytoy.views.component;
 
 import android.content.Context;
 import android.os.Build;

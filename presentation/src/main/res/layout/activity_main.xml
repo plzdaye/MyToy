@@ -5,7 +5,7 @@
 
     <include layout="@layout/view_toolbar"/>
 
-    <fun.plz.mytoy.views.widgets.MultiSwipeRefreshLayout
+    <fun.plz.mytoy.views.component.MultiSwipeRefreshLayout
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:paddingLeft="2.5dp"
             android:paddingRight="2.5dp"/>
 
-    </fun.plz.mytoy.views.widgets.MultiSwipeRefreshLayout>
+    </fun.plz.mytoy.views.component.MultiSwipeRefreshLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/main_fab"
@@ -34,6 +34,6 @@
         app:layout_anchor="@id/swipe_refresh_layout"
         app:borderWidth="0dp"
         app:layout_anchorGravity="right|bottom"
-        app:layout_behavior="fun.plz.mytoy.views.widgets.ScrollAwareFABBehavior"/>
+        app:layout_behavior="fun.plz.mytoy.views.component.ScrollAwareFABBehavior"/>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 import fun.plz.mytoy.R;
 import fun.plz.mytoy.model.entity.Meizhi;
 import fun.plz.mytoy.views.listener.OnMeizhiTouchListener;
-import fun.plz.mytoy.views.widgets.RatioImageView;
+import fun.plz.mytoy.views.component.RatioImageView;
 
 /**
  * Created by PLZ on 2016/12/2.

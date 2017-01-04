@@ -41,7 +41,7 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file('../buildsystem/debug.keystore')
+            storeFile file('../buildsystem/debug.jks')
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
@@ -81,6 +81,7 @@ dependencies {
     compile presentationDependencies.design
     compile presentationDependencies.retrofit
     compile presentationDependencies.converterGson
+    compile presentationDependencies.retrofit2RxjavaAdapter
     compile presentationDependencies.glide
     provided presentationDependencies.javaxAnnotation
 

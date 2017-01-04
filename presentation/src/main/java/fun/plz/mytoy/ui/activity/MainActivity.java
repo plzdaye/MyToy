@@ -19,7 +19,9 @@ import fun.plz.mytoy.model.MeizhiData;
 import fun.plz.mytoy.model.entity.Meizhi;
 import fun.plz.mytoy.views.adapter.MeizhiListAdapter;
 import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -48,42 +50,33 @@ public class MainActivity extends BaseActivity {
         mRecyclerView.setLayoutManager(layoutManager);
         mMeizhiListAdapter = new MeizhiListAdapter(this, mMeizhiList);
         mRecyclerView.setAdapter(mMeizhiListAdapter);
-//        new Once(this).show("tip_guide_6", () -> {
-//            Snackbar.make(mRecyclerView, getString(R.string.tip_guide), Snackbar.LENGTH_INDEFINITE)
-//                    .setAction(R.string.i_know, v -> {
-//                    })
-//                    .show();
-//        });
-
-//        mRecyclerView.addOnScrollListener(getOnBottomListener(layoutManager));
-//        mMeizhiListAdapter.setOnMeizhiTouchListener(getOnMeizhiTouchListener());
     }
 
     private void loadDate() {
         Observable<MeizhiData> result = sGankIO.getMeizhiData(mPage);
         result.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<MeizhiData>() {
+                .subscribe(new Observer<MeizhiData>() {
                     @Override
-                    public final void onComplete() {
-                        // do nothing
+                    public void onSubscribe(Disposable d) {
+
                     }
 
                     @Override
-                    public final void onError(Throwable e) {
+                    public void onNext(MeizhiData value) {
+                        mMeizhiList.addAll(value.results);
+                        mMeizhiListAdapter.notifyDataSetChanged();
+                        Log.e("---%s", value.results.get(0).toString());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
                         Log.e("GithubDemo", e.getMessage());
                     }
 
                     @Override
-                    public void onSubscribe(Subscription s) {
+                    public void onComplete() {
 
-                    }
-
-                    @Override
-                    public void onNext(MeizhiData meizhiData) {
-                        mMeizhiList.addAll(meizhiData.results);
-                        mMeizhiListAdapter.notifyDataSetChanged();
-                        Log.e("---%s", meizhiData.results.get(0).toString());
                     }
                 });
     }
