@@ -2,22 +2,20 @@ package fun.plz.mytoy.startview;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import fun.plz.mytoy.R;
+import fun.plz.mytoy.base.TransparentStatusBarActivity;
 
-public class MajorActivity extends AppCompatActivity
+public class MajorActivity extends TransparentStatusBarActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static Intent getCallingIntent(Context context){
@@ -30,16 +28,14 @@ public class MajorActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.KITKAT){
+            drawer.setFitsSystemWindows (true);
+            drawer.setClipToPadding (false);
+        }
+
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
