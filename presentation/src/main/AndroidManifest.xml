@@ -25,7 +25,7 @@
         <activity
             android:name=".startview.MajorActivity"
             android:label="@string/title_activity_major"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar.JianDan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

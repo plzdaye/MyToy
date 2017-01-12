@@ -1,4 +1,4 @@
-package fun.plz.mytoy;
+package fun.plz.mytoy.base;
 
 import java.lang.annotation.Retention;
 

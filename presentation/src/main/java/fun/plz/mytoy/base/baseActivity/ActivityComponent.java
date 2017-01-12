@@ -1,10 +1,9 @@
-package fun.plz.mytoy.base;
+package fun.plz.mytoy.base.baseActivity;
 
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 
 import dagger.Component;
-import fun.plz.mytoy.PerActivity;
+import fun.plz.mytoy.base.PerActivity;
 import fun.plz.mytoy.application.ApplicationComponent;
 
 /**

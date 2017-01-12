@@ -1,4 +1,4 @@
-package fun.plz.mytoy.base;
+package fun.plz.mytoy.base.baseActivity;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import fun.plz.mytoy.base.baseActivity.BaseActivity;
 
 /**
  * Created by PLZ on 2017/1/11.

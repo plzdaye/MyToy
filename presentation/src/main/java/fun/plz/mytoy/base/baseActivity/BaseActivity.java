@@ -1,13 +1,9 @@
-package fun.plz.mytoy.base;
+package fun.plz.mytoy.base.baseActivity;
 
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.widget.Toast;
 
 import fun.plz.mytoy.application.ApplicationComponent;
 import fun.plz.mytoy.application.MyToyApplication;
@@ -20,7 +16,7 @@ import fun.plz.mytoy.network.PLZFactory;
 
 public class BaseActivity extends AppCompatActivity {
     public static final GankApi sGankIO = PLZFactory.getGankIOSingleton();
-
+    private Toast toast;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,5 +29,9 @@ public class BaseActivity extends AppCompatActivity {
 
     protected ActivityModule getActivityModule(){
         return new ActivityModule(this);
+    }
+
+    public void showToastMessage(String message){
+        toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 }

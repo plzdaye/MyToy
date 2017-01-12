@@ -14,7 +14,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fun.plz.mytoy.R;
-import fun.plz.mytoy.base.BaseActivity;
+import fun.plz.mytoy.base.baseActivity.BaseActivity;
 import fun.plz.mytoy.model.MeizhiData;
 import fun.plz.mytoy.model.entity.Meizhi;
 import fun.plz.mytoy.views.adapter.MeizhiListAdapter;

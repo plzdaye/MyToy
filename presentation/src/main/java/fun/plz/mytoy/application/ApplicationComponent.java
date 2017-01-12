@@ -5,7 +5,7 @@ import android.content.Context;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import fun.plz.mytoy.base.BaseActivity;
+import fun.plz.mytoy.base.baseActivity.BaseActivity;
 import fun.plz.mytoy.executor.PostExecutionThread;
 import fun.plz.mytoy.executor.ThreadExecutor;
 

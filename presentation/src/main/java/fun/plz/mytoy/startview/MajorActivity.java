@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,7 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import fun.plz.mytoy.R;
-import fun.plz.mytoy.base.TransparentStatusBarActivity;
+import fun.plz.mytoy.base.baseActivity.TransparentStatusBarActivity;
+import fun.plz.mytoy.jiandan.JianDanFragment;
 
 public class MajorActivity extends TransparentStatusBarActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -83,8 +86,9 @@ public class MajorActivity extends TransparentStatusBarActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        if (id == R.id.nav_jiandan) {
+            //showfragment
+            replaceFragment(R.id.content_major,new JianDanFragment());
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -100,5 +104,11 @@ public class MajorActivity extends TransparentStatusBarActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void replaceFragment(int id_content, Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(id_content, fragment);
+        transaction.commit();
     }
 }
