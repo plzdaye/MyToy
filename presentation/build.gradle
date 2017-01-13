@@ -86,6 +86,11 @@ dependencies {
     compile presentationDependencies.converterGson
     compile presentationDependencies.retrofit2RxjavaAdapter
     compile presentationDependencies.glide
+    compile (presentationDependencies.fastadapter){
+        transitive = true
+    }
+//    compile presentationDependencies.fastadapterExtensions
+//    compile presentationDependencies.materializeVersion
     provided presentationDependencies.javaxAnnotation
 
     androidTestCompile presentationTestDependencies.mockito
