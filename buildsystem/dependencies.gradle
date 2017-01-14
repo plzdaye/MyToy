@@ -30,6 +30,7 @@ ext {
   retrofit2RxjavaAdapterVersion = '1.0.0'
   glideVersion = '3.7.0'
   fastadapterVersion = '2.1.5'
+  fastadapterCommonVersion = '2.1.0'
   fastadapterExtensionsVersion = '2.1.0'
   materializeVersion = '1.0.0'
 
@@ -61,6 +62,7 @@ ext {
       retrofit2RxjavaAdapter:   "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:${retrofit2RxjavaAdapterVersion}",
       glide:                    "com.github.bumptech.glide:glide:${glideVersion}",
       fastadapter:              "com.mikepenz:fastadapter:${fastadapterVersion}@aar",
+      fastadapterCommon:       "com.mikepenz:fastadapter-commons:${fastadapterCommonVersion}@aar",
       fastadapterExtensions:    "com.mikepenz:fastadapter-extensions:${fastadapterExtensionsVersion}@aar",
       materializeVersion:       "com.mikepenz:materialize:${materializeVersion}@aar"
   ]

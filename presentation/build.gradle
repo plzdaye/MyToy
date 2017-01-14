@@ -89,6 +89,7 @@ dependencies {
     compile (presentationDependencies.fastadapter){
         transitive = true
     }
+    compile presentationDependencies.fastadapterCommon
 //    compile presentationDependencies.fastadapterExtensions
 //    compile presentationDependencies.materializeVersion
     provided presentationDependencies.javaxAnnotation
